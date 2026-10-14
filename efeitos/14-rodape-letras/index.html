@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>14 · Rodapé com letras gigantes — Efeitos LP Clínica</title>
+<meta name="description" content="A marca gigante no rodapé aparece letra por letra, subindo e girando de leve, enquanto um leque de cards se abre ao lado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>14</b>Rodapé com letras gigantes</span>
+  <button type="button" class="bar__btn" data-replay>↻ Recomeçar</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div>
+    <h1 class="big">Rodapé com letras</h1>
+    <p class="hint">Role até o fim ↓</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__top">
+    <p><b>Clínica Exemplo</b><br>Ortodontia, estética e clínica geral.</p>
+    <p>Av. Exemplo, 100 · Sala 2<br>Seg. a Sáb. · 8h30 às 19h</p>
+  </div>
+  <span class="foot__word" aria-hidden="true">Clínica</span>
+  <div class="fan" aria-hidden="true">
+    <span class="fan__card ph ph--a"></span>
+    <span class="fan__card ph ph--b"></span>
+    <span class="fan__card ph ph--c"></span>
+  </div>
+</footer>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div&gt;
+    &lt;h1 class="big"&gt;Rodapé com letras&lt;/h1&gt;
+    &lt;p class="hint"&gt;Role até o fim ↓&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;footer class="foot"&gt;
+  &lt;div class="foot__top"&gt;
+    &lt;p&gt;&lt;b&gt;Clínica Exemplo&lt;/b&gt;&lt;br&gt;Ortodontia, estética e clínica geral.&lt;/p&gt;
+    &lt;p&gt;Av. Exemplo, 100 · Sala 2&lt;br&gt;Seg. a Sáb. · 8h30 às 19h&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;span class="foot__word" aria-hidden="true"&gt;Clínica&lt;/span&gt;
+  &lt;div class="fan" aria-hidden="true"&gt;
+    &lt;span class="fan__card ph ph--a"&gt;&lt;/span&gt;
+    &lt;span class="fan__card ph ph--b"&gt;&lt;/span&gt;
+    &lt;span class="fan__card ph ph--c"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.foot { position: relative; height: 560px; padding: 56px 5vw 0; overflow: hidden; background: var(--accent); isolation: isolate; }
+.foot__top { position: relative; z-index: 2; display: flex; gap: 8vw; flex-wrap: wrap; color: #161412b0; }
+.foot__top b { color: var(--ink); font-weight: 600; }
+
+.foot__word {
+  position: absolute; bottom: -.12em; left: 1.5vw; z-index: 0; white-space: nowrap;
+  font-family: var(--wordmark); font-style: italic; font-size: 24vw; line-height: 1; letter-spacing: -.02em; pointer-events: none;
+}
+
+/* leque de 3 cards: posição e rotação fixas pelo CSS; o GSAP só faz a entrada */
+.fan { position: absolute; bottom: -10vw; left: 62vw; z-index: 1; width: 31vw; height: 31vw; pointer-events: none; }
+.fan__card { position: absolute; top: 50%; left: 50%; display: block; width: 15.5vw; height: 19vw; translate: -50% -50%; border-radius: var(--r-md); }
+.fan__card:nth-child(1) { translate: calc(-50% - 5.5vw) calc(-50% + 4vw);   rotate: -15deg; opacity: .45; }
+.fan__card:nth-child(2) { translate: calc(-50% + .75vw) calc(-50% - 2.1vw); rotate: -7deg;  opacity: .8; }
+.fan__card:nth-child(3) { translate: calc(-50% + 7vw)   calc(-50% - 5.2vw); rotate: 4.4deg; }
+@media (max-width: 760px) { .fan { display: none; } .foot__word { font-size: 30vw; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger, SplitText);
+
+let tl;
+
+document.fonts.ready.then(() =&gt; {
+  SplitText.create('.foot__word', {
+    type: 'chars',
+    onSplit(self) {
+      tl = gsap.timeline({
+        scrollTrigger: { trigger: '.foot', start: 'top 70%', once: true }
+      });
+
+      tl
+        // letras sobem de baixo, girando um pouco
+        .from(self.chars, { yPercent: 110, rotation: 8, duration: 1.4, stagger: 0.06, ease: 'expo.out' }, 0)
+        // o leque sobe e cada card gira para sua posição final (definida no CSS)
+        .from('.fan__card', {
+          y: 260, rotation: (i) =&gt; [16, 8, -6][i], autoAlpha: 0,
+          duration: 1.4, stagger: 0.12, ease: 'expo.out'
+        }, 0.2);
+
+      return tl;
+    }
+  });
+});
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

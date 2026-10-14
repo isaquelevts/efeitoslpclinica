@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 · Revelação de imagens com clip-path — Efeitos LP Clínica</title>
+<meta name="description" content="Três jeitos de abrir uma imagem: de baixo para cima, de cima para baixo e em círculo. A foto ainda assenta com um leve zoom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>10</b>Revelação de imagens com clip-path</span>
+  <button type="button" class="bar__btn" data-replay>↻ Repetir</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="reveals">
+  <p class="hint">Três formas de abrir uma imagem</p>
+  <div class="reveals__row">
+    <figure class="reveal reveal--up"><div class="ph ph--a"></div><figcaption>De baixo para cima</figcaption></figure>
+    <figure class="reveal reveal--down"><div class="ph ph--b"></div><figcaption>De cima para baixo</figcaption></figure>
+    <figure class="reveal reveal--circle"><div class="ph ph--c"></div><figcaption>Círculo que abre</figcaption></figure>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="reveals"&gt;
+  &lt;p class="hint"&gt;Três formas de abrir uma imagem&lt;/p&gt;
+  &lt;div class="reveals__row"&gt;
+    &lt;figure class="reveal reveal--up"&gt;&lt;div class="ph ph--a"&gt;&lt;/div&gt;&lt;figcaption&gt;De baixo para cima&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure class="reveal reveal--down"&gt;&lt;div class="ph ph--b"&gt;&lt;/div&gt;&lt;figcaption&gt;De cima para baixo&lt;/figcaption&gt;&lt;/figure&gt;
+    &lt;figure class="reveal reveal--circle"&gt;&lt;div class="ph ph--c"&gt;&lt;/div&gt;&lt;figcaption&gt;Círculo que abre&lt;/figcaption&gt;&lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.reveals { min-height: 100svh; display: grid; align-content: center; justify-items: center; padding: 96px 5vw; }
+.reveals__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: min(1100px, 100%); margin-top: 1.5rem; }
+.reveal { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; }
+.reveal .ph { position: absolute; inset: 0; }
+.reveal figcaption { position: absolute; left: 12px; bottom: 12px; padding: 5px 10px; border-radius: 8px; background: #0007; color: #fff; font-size: 13px; }
+@media (max-width: 700px) { .reveals__row { grid-template-columns: 1fr; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const tl = gsap.timeline({
+  scrollTrigger: { trigger: '.reveals', start: 'top 85%', once: true }
+});
+
+tl
+  // de baixo para cima: recorta tudo e vai liberando a parte de cima
+  .fromTo('.reveal--up',
+    { clipPath: 'inset(100% 0% 0% 0% round 16px)' },
+    { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1.4, ease: 'expo.inOut' }, 0)
+  // de cima para baixo
+  .fromTo('.reveal--down',
+    { clipPath: 'inset(0% 0% 100% 0% round 16px)' },
+    { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: 1.4, ease: 'expo.inOut' }, 0.15)
+  // círculo que abre do centro
+  .fromTo('.reveal--circle',
+    { clipPath: 'circle(0% at 50% 50%)' },
+    { clipPath: 'circle(75% at 50% 50%)', duration: 1.6, ease: 'expo.inOut' }, 0.3)
+  // a foto assenta com um zoom out
+  .from('.reveal .ph', { scale: 1.3, duration: 2, ease: 'expo.out' }, 0);
+
+window.replay = () =&gt; tl.restart();
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

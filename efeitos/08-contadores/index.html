@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>08 · Números que contam até o valor final — Efeitos LP Clínica</title>
+<meta name="description" content="Os números sobem de zero até o valor quando entram na tela. O texto final (como &quot;2k+&quot;) aparece só no fim.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>08</b>Números que contam até o valor final</span>
+  <button type="button" class="bar__btn" data-replay>↻ Repetir</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s">
+  <div>
+    <p class="hint">Contadores</p>
+    <dl class="stats">
+      <div class="stat"><dt class="num" data-count="13" data-suffix="+">13+</dt><dd class="lbl">Anos de experiência</dd></div>
+      <div class="stat"><dt class="num" data-count="2000">2k+</dt><dd class="lbl">Sorrisos transformados</dd></div>
+      <div class="stat"><dt class="num" data-count="120">120</dt><dd class="lbl">Consultas por mês</dd></div>
+    </dl>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s"&gt;
+  &lt;div&gt;
+    &lt;p class="hint"&gt;Contadores&lt;/p&gt;
+    &lt;dl class="stats"&gt;
+      &lt;div class="stat"&gt;&lt;dt class="num" data-count="13" data-suffix="+"&gt;13+&lt;/dt&gt;&lt;dd class="lbl"&gt;Anos de experiência&lt;/dd&gt;&lt;/div&gt;
+      &lt;div class="stat"&gt;&lt;dt class="num" data-count="2000"&gt;2k+&lt;/dt&gt;&lt;dd class="lbl"&gt;Sorrisos transformados&lt;/dd&gt;&lt;/div&gt;
+      &lt;div class="stat"&gt;&lt;dt class="num" data-count="120"&gt;120&lt;/dt&gt;&lt;dd class="lbl"&gt;Consultas por mês&lt;/dd&gt;&lt;/div&gt;
+    &lt;/dl&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 2rem; }
+.num { font-family: var(--serif); font-style: italic; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; letter-spacing: -.02em; }
+.lbl { margin-top: .6em; font-size: 14px; color: var(--muted); }
+@media (max-width: 640px) { .stats { grid-template-columns: 1fr; gap: 32px; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const tweens = [];
+
+document.querySelectorAll('[data-count]').forEach((el) =&gt; {
+  const final = el.textContent.trim();            // texto que aparece no fim: "13+", "2k+"...
+  const target = Number(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  const state = { v: 0 };                         // o GSAP anima este objeto...
+
+  el.textContent = '0' + suffix;
+
+  tweens.push(gsap.to(state, {
+    v: target, duration: 2.2, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+    onUpdate: () =&gt; {                             // ...e a cada quadro o número é escrito na tela
+      el.textContent = Math.round(state.v).toLocaleString('pt-BR') + suffix;
+    },
+    onComplete: () =&gt; { el.textContent = final; }
+  }));
+});
+
+window.replay = () =&gt; tweens.forEach((t) =&gt; t.restart());
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

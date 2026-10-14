@@ -1,0 +1,5 @@
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 12vh 5vw; }
+.frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-md); margin: 0; }
+.frame__img { position: absolute; inset: 0; }
+.frame figcaption { position: absolute; left: 16px; bottom: 16px; padding: 6px 12px; border-radius: 8px; background: #0007; color: #fff; font-size: 13px; }
+@media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }

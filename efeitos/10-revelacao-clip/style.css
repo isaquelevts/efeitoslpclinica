@@ -1,0 +1,6 @@
+.reveals { min-height: 100svh; display: grid; align-content: center; justify-items: center; padding: 96px 5vw; }
+.reveals__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: min(1100px, 100%); margin-top: 1.5rem; }
+.reveal { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; }
+.reveal .ph { position: absolute; inset: 0; }
+.reveal figcaption { position: absolute; left: 12px; bottom: 12px; padding: 5px 10px; border-radius: 8px; background: #0007; color: #fff; font-size: 13px; }
+@media (max-width: 700px) { .reveals__row { grid-template-columns: 1fr; } }

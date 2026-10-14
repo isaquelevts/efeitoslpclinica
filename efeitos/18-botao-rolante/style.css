@@ -1,0 +1,35 @@
+.btns { display: grid; justify-items: center; gap: 18px; }
+
+.btn {
+  --ease: cubic-bezier(.625, .05, 0, 1); --beat: .525s;
+  position: relative; display: inline-flex; align-items: center; gap: .714em; overflow: hidden;
+  padding: .571em .571em .571em 1.143em; font-size: 16px; line-height: 1.43; letter-spacing: -.03em;
+  color: var(--btn-ink); background: var(--btn-bg); border-radius: 16px; white-space: nowrap;
+}
+.btn__mask { position: relative; z-index: 1; display: block; overflow: hidden; }
+.btn__label { display: block; transition: translate var(--beat) var(--ease); }
+.btn__label--next { position: absolute; top: 100%; left: 0; color: var(--btn-ink-next); }   /* cópia que entra por baixo */
+.btn__icon { position: relative; z-index: 1; display: grid; place-items: center; width: 2.286em; height: 2.286em; }
+.btn__chip { position: absolute; inset: 0; background: var(--btn-chip); border-radius: 8px; transition: background-color var(--beat) var(--ease); }
+.btn__track { position: relative; display: flex; justify-content: flex-end; width: 1.143em; height: 1.143em; overflow: hidden; }
+.btn__arrows { display: flex; flex: none; }
+.btn__arrows svg { flex: none; width: 1.143em; height: 1.143em; color: var(--ink); transition: translate var(--beat) var(--ease); }
+.btn__sweep {                                                       /* faixa inclinada que sobe no hover */
+  position: absolute; bottom: 0; left: -10%; z-index: 0; width: 120%; height: 100%;
+  background: var(--btn-bg-next); translate: 0 175%; rotate: 15deg;
+  transition: translate var(--beat) var(--ease), rotate var(--beat) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .btn__label, .btn:focus-visible .btn__label { translate: 0 -100%; }
+  .btn:hover .btn__arrows svg, .btn:focus-visible .btn__arrows svg { translate: 200% 0; }
+  .btn:hover .btn__chip, .btn:focus-visible .btn__chip { background: var(--btn-chip-next); }
+  .btn:hover .btn__sweep, .btn:focus-visible .btn__sweep { translate: 0 0; rotate: 0deg; }
+}
+
+/* variações de cor (só trocam variáveis) */
+.btn--accent { --btn-bg: var(--accent); --btn-ink: var(--ink); --btn-chip: #fff; }
+.btn--ink    { --btn-bg: var(--ink); --btn-ink: #fff; --btn-chip: var(--accent); --btn-bg-next: var(--accent); --btn-ink-next: var(--ink); --btn-chip-next: #fff; }
+.btn--light  { --btn-bg: #fff; --btn-ink: var(--ink); --btn-chip: var(--accent); }
+.btn--paper  { --btn-bg-next: var(--ink); --btn-ink-next: #fff; --btn-chip-next: var(--accent); }
+.btn--photo.btn--light { --btn-bg-next: var(--accent); --btn-ink-next: var(--ink); --btn-chip-next: #fff; }

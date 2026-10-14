@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Efeitos LP Clínica — 22 efeitos de animação</title>
+<meta name="description" content="22 efeitos de animação em GSAP, CSS e JavaScript puro, cada um com demo ao vivo e código para copiar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/gallery.css">
+</head>
+<body class="gallery">
+
+<header class="top">
+  <p class="top__eyebrow">Landing page de clínica</p>
+  <h1 class="top__title">Efeitos que dão vida<br>à página</h1>
+  <p class="top__lead">22 efeitos de animação em GSAP, CSS e JavaScript puro. Abra qualquer um para ver ao vivo, repetir a animação e copiar o código.</p>
+  <ul class="top__chips"><li>GSAP 3.13</li><li>ScrollTrigger</li><li>SplitText</li><li>Lenis</li><li>CSS</li><li>JS puro</li></ul>
+</header>
+
+<main class="list">
+    <section class="grp">
+      <h2 class="grp__t">Rolagem <small>4</small></h2>
+      <div class="grp__grid">
+      <a class="fx" href="efeitos/01-smooth-scroll/">
+        <span class="fx__n">01</span>
+        <h3 class="fx__t">Rolagem suave (Lenis)</h3>
+        <p class="fx__d">A página desliza em vez de pular, e os links do menu rolam até a seção com inércia. Sincronizado com o ScrollTrigger.</p>
+        <ul class="fx__tags"><li>Lenis</li><li>GSAP</li><li>ScrollTrigger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/02-etapas-pin/">
+        <span class="fx__n">02</span>
+        <h3 class="fx__t">Seção que trava e acende as etapas</h3>
+        <p class="fx__d">A seção fica fixa na tela enquanto uma linha avança e acende cada etapa, uma por vez (ScrollTrigger com pin + scrub).</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger</li><li>pin</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/03-painel-expande/">
+        <span class="fx__n">03</span>
+        <h3 class="fx__t">Painel que expande ao rolar</h3>
+        <p class="fx__d">O bloco entra pequeno, com cantos bem arredondados, e vai abrindo até ocupar a tela enquanto a foto desce mais devagar.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger</li><li>clip-path</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/04-parallax/">
+        <span class="fx__n">04</span>
+        <h3 class="fx__t">Parallax em fotos</h3>
+        <p class="fx__d">A foto se move dentro da moldura mais devagar que a rolagem. Duas variações: deslizando e com zoom que assenta.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger</li><li>scrub</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      </div>
+    </section>
+    <section class="grp">
+      <h2 class="grp__t">Texto <small>4</small></h2>
+      <div class="grp__grid">
+      <a class="fx" href="efeitos/05-palavras-blur/">
+        <span class="fx__n">05</span>
+        <h3 class="fx__t">Palavras surgindo do desfoque</h3>
+        <p class="fx__d">Cada palavra do título sobe saindo do blur, uma depois da outra. SplitText divide o texto e se refaz sozinho se a largura mudar.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>ScrollTrigger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/06-linhas-mascara/">
+        <span class="fx__n">06</span>
+        <h3 class="fx__t">Linhas subindo por trás de uma máscara</h3>
+        <p class="fx__d">O parágrafo é dividido em linhas e cada uma sobe de dentro de uma máscara, como se o texto fosse impresso na hora.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>ScrollTrigger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/07-titulo-acende/">
+        <span class="fx__n">07</span>
+        <h3 class="fx__t">Título que acende palavra por palavra</h3>
+        <p class="fx__d">As palavras começam apagadas e vão acendendo conforme você rola, no ritmo da rolagem (scrub).</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>ScrollTrigger</li><li>scrub</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/08-contadores/">
+        <span class="fx__n">08</span>
+        <h3 class="fx__t">Números que contam até o valor final</h3>
+        <p class="fx__d">Os números sobem de zero até o valor quando entram na tela. O texto final (como "2k+") aparece só no fim.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      </div>
+    </section>
+    <section class="grp">
+      <h2 class="grp__t">Entradas e imagens <small>6</small></h2>
+      <div class="grp__grid">
+      <a class="fx" href="efeitos/09-abertura-hero/">
+        <span class="fx__n">09</span>
+        <h3 class="fx__t">Abertura do hero</h3>
+        <p class="fx__d">A foto abre do centro da tela, o menu desce, o título sai do desfoque palavra por palavra e o texto sobe por máscara. Tudo numa timeline só.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>timeline</li><li>clip-path</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/10-revelacao-clip/">
+        <span class="fx__n">10</span>
+        <h3 class="fx__t">Revelação de imagens com clip-path</h3>
+        <p class="fx__d">Três jeitos de abrir uma imagem: de baixo para cima, de cima para baixo e em círculo. A foto ainda assenta com um leve zoom.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>clip-path</li><li>timeline</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/11-cards-escada/">
+        <span class="fx__n">11</span>
+        <h3 class="fx__t">Cards em escada com profundidade</h3>
+        <p class="fx__d">Três cards em degraus: cada um entra subindo com uma leve rotação e depois anda num ritmo diferente na rolagem, criando profundidade.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger</li><li>scrub</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/12-cascata-batch/">
+        <span class="fx__n">12</span>
+        <h3 class="fx__t">Entrada em cascata (ScrollTrigger.batch)</h3>
+        <p class="fx__d">Vários itens aparecem em sequência, sobem e ganham opacidade. O batch agrupa os que entram na tela juntos e anima todos de uma vez.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>ScrollTrigger.batch</li><li>stagger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/13-linhas-desenhando/">
+        <span class="fx__n">13</span>
+        <h3 class="fx__t">Linhas que se desenham</h3>
+        <p class="fx__d">Os separadores de uma lista se desenham da esquerda para a direita, em sequência, enquanto o texto sobe. Usa uma variável CSS animada pelo GSAP.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>CSS variable</li><li>timeline</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/14-rodape-letras/">
+        <span class="fx__n">14</span>
+        <h3 class="fx__t">Rodapé com letras gigantes</h3>
+        <p class="fx__d">A marca gigante no rodapé aparece letra por letra, subindo e girando de leve, enquanto um leque de cards se abre ao lado.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>ScrollTrigger</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      </div>
+    </section>
+    <section class="grp">
+      <h2 class="grp__t">Interação <small>6</small></h2>
+      <div class="grp__grid">
+      <a class="fx" href="efeitos/15-troca-foto/">
+        <span class="fx__n">15</span>
+        <h3 class="fx__t">Troca de foto e texto com blur e zoom</h3>
+        <p class="fx__d">Ao clicar numa especialidade, a foto atual se desfoca e dá zoom enquanto a nova entra nítida, e o texto troca com um leve desfoque.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>interação</li><li>filter</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/16-citacoes/">
+        <span class="fx__n">16</span>
+        <h3 class="fx__t">Citações com linhas subindo</h3>
+        <p class="fx__d">Ao trocar de depoimento, as linhas do novo texto sobem de dentro da máscara e o nome entra logo depois.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>SplitText</li><li>interação</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/17-faq-acordeao/">
+        <span class="fx__n">17</span>
+        <h3 class="fx__t">Perguntas frequentes (acordeão suave)</h3>
+        <p class="fx__d">O item abre e fecha animando a altura de verdade, sem JavaScript de animação: só CSS grid (0fr → 1fr). O ícone troca de + para −.</p>
+        <ul class="fx__tags"><li>CSS</li><li>JS puro</li><li>acessível</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/18-botao-rolante/">
+        <span class="fx__n">18</span>
+        <h3 class="fx__t">Botão com texto rolando e varredura</h3>
+        <p class="fx__d">No hover o texto rola para cima trocando por uma cópia, a seta desliza para fora e uma faixa de cor varre o botão. Só CSS.</p>
+        <ul class="fx__tags"><li>CSS</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/19-card-seta/">
+        <span class="fx__n">19</span>
+        <h3 class="fx__t">Card com seta que troca e zoom na foto</h3>
+        <p class="fx__d">No hover, a foto dá zoom, a seta do botão sai por um canto enquanto outra entra pelo canto oposto, e o "Saiba mais" ganha sublinhado.</p>
+        <ul class="fx__tags"><li>CSS</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/20-botoes-magneticos/">
+        <span class="fx__n">20</span>
+        <h3 class="fx__t">Botões magnéticos</h3>
+        <p class="fx__d">Os botões "grudam" no ponteiro: quando o mouse chega perto, eles seguem o movimento e voltam suaves quando ele sai. Usa gsap.quickTo, a forma mais leve de animar a cada movimento.</p>
+        <ul class="fx__tags"><li>GSAP</li><li>quickTo</li><li>interação</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      </div>
+    </section>
+    <section class="grp">
+      <h2 class="grp__t">Carrosséis <small>2</small></h2>
+      <div class="grp__grid">
+      <a class="fx" href="efeitos/21-carrossel-elipse/">
+        <span class="fx__n">21</span>
+        <h3 class="fx__t">Carrossel em elipse (giro contínuo)</h3>
+        <p class="fx__d">Os cards giram sem parar numa elipse: o da frente é grande e os de trás ficam menores e mais apagados. Desacelera no hover, obedece ao arrastar e tem setas e teclado. JS puro, sem biblioteca.</p>
+        <ul class="fx__tags"><li>JS puro</li><li>matemática</li><li>arrastar</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      <a class="fx" href="efeitos/22-carrossel-infinito/">
+        <span class="fx__n">22</span>
+        <h3 class="fx__t">Carrossel automático infinito (faixa)</h3>
+        <p class="fx__d">Uma faixa de cards desliza sozinha, para sempre e sem emenda: uma cópia dos cards vem logo atrás, e a posição "dá a volta" no momento certo. Dá para arrastar com o dedo ou o mouse.</p>
+        <ul class="fx__tags"><li>JS puro</li><li>arrastar</li><li>loop</li></ul>
+        <span class="fx__go" aria-hidden="true">↗</span>
+      </a>
+      </div>
+    </section>
+</main>
+
+<footer class="foot">
+  <p>Cada efeito é uma pasta em <code>efeitos/</code> com <code>index.html</code>, <code>style.css</code> e <code>script.js</code> — é só copiar.</p>
+  <p><a href="https://github.com/isaquelevts/efeitoslpclinica" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+</footer>
+
+</body>
+</html>

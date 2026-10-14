@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>18 · Botão com texto rolando e varredura — Efeitos LP Clínica</title>
+<meta name="description" content="No hover o texto rola para cima trocando por uma cópia, a seta desliza para fora e uma faixa de cor varre o botão. Só CSS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>18</b>Botão com texto rolando e varredura</span>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div class="btns">
+    <p class="hint" style="margin:0 0 1.5rem">Passe o mouse</p>
+    <a class="btn btn--accent btn--paper" href="#"><span class="btn__mask"><span class="btn__label">Agendar avaliação</span><span class="btn__label btn__label--next" aria-hidden="true">Agendar avaliação</span></span><span class="btn__icon"><span class="btn__chip"></span><span class="btn__track"><span class="btn__arrows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></span><span class="btn__sweep"></span></a>
+    <a class="btn btn--ink" href="#"><span class="btn__mask"><span class="btn__label">Chamar no WhatsApp</span><span class="btn__label btn__label--next" aria-hidden="true">Chamar no WhatsApp</span></span><span class="btn__icon"><span class="btn__chip"></span><span class="btn__track"><span class="btn__arrows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></span><span class="btn__sweep"></span></a>
+  </div>
+</section>
+<section class="s s--ink">
+  <div class="btns">
+    <a class="btn btn--light btn--photo" href="#"><span class="btn__mask"><span class="btn__label">Agendar pelo WhatsApp</span><span class="btn__label btn__label--next" aria-hidden="true">Agendar pelo WhatsApp</span></span><span class="btn__icon"><span class="btn__chip"></span><span class="btn__track"><span class="btn__arrows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></span><span class="btn__sweep"></span></a>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div class="btns"&gt;
+    &lt;p class="hint" style="margin:0 0 1.5rem"&gt;Passe o mouse&lt;/p&gt;
+    &lt;a class="btn btn--accent btn--paper" href="#"&gt;&lt;span class="btn__mask"&gt;&lt;span class="btn__label"&gt;Agendar avaliação&lt;/span&gt;&lt;span class="btn__label btn__label--next" aria-hidden="true"&gt;Agendar avaliação&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__icon"&gt;&lt;span class="btn__chip"&gt;&lt;/span&gt;&lt;span class="btn__track"&gt;&lt;span class="btn__arrows"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__sweep"&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="btn btn--ink" href="#"&gt;&lt;span class="btn__mask"&gt;&lt;span class="btn__label"&gt;Chamar no WhatsApp&lt;/span&gt;&lt;span class="btn__label btn__label--next" aria-hidden="true"&gt;Chamar no WhatsApp&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__icon"&gt;&lt;span class="btn__chip"&gt;&lt;/span&gt;&lt;span class="btn__track"&gt;&lt;span class="btn__arrows"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__sweep"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="s s--ink"&gt;
+  &lt;div class="btns"&gt;
+    &lt;a class="btn btn--light btn--photo" href="#"&gt;&lt;span class="btn__mask"&gt;&lt;span class="btn__label"&gt;Agendar pelo WhatsApp&lt;/span&gt;&lt;span class="btn__label btn__label--next" aria-hidden="true"&gt;Agendar pelo WhatsApp&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__icon"&gt;&lt;span class="btn__chip"&gt;&lt;/span&gt;&lt;span class="btn__track"&gt;&lt;span class="btn__arrows"&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"&gt;&lt;path d="M5 12h14M13 6l6 6-6 6"/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="btn__sweep"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+  <pre data-pane="css"><code>.btns { display: grid; justify-items: center; gap: 18px; }
+
+.btn {
+  --ease: cubic-bezier(.625, .05, 0, 1); --beat: .525s;
+  position: relative; display: inline-flex; align-items: center; gap: .714em; overflow: hidden;
+  padding: .571em .571em .571em 1.143em; font-size: 16px; line-height: 1.43; letter-spacing: -.03em;
+  color: var(--btn-ink); background: var(--btn-bg); border-radius: 16px; white-space: nowrap;
+}
+.btn__mask { position: relative; z-index: 1; display: block; overflow: hidden; }
+.btn__label { display: block; transition: translate var(--beat) var(--ease); }
+.btn__label--next { position: absolute; top: 100%; left: 0; color: var(--btn-ink-next); }   /* cópia que entra por baixo */
+.btn__icon { position: relative; z-index: 1; display: grid; place-items: center; width: 2.286em; height: 2.286em; }
+.btn__chip { position: absolute; inset: 0; background: var(--btn-chip); border-radius: 8px; transition: background-color var(--beat) var(--ease); }
+.btn__track { position: relative; display: flex; justify-content: flex-end; width: 1.143em; height: 1.143em; overflow: hidden; }
+.btn__arrows { display: flex; flex: none; }
+.btn__arrows svg { flex: none; width: 1.143em; height: 1.143em; color: var(--ink); transition: translate var(--beat) var(--ease); }
+.btn__sweep {                                                       /* faixa inclinada que sobe no hover */
+  position: absolute; bottom: 0; left: -10%; z-index: 0; width: 120%; height: 100%;
+  background: var(--btn-bg-next); translate: 0 175%; rotate: 15deg;
+  transition: translate var(--beat) var(--ease), rotate var(--beat) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .btn__label, .btn:focus-visible .btn__label { translate: 0 -100%; }
+  .btn:hover .btn__arrows svg, .btn:focus-visible .btn__arrows svg { translate: 200% 0; }
+  .btn:hover .btn__chip, .btn:focus-visible .btn__chip { background: var(--btn-chip-next); }
+  .btn:hover .btn__sweep, .btn:focus-visible .btn__sweep { translate: 0 0; rotate: 0deg; }
+}
+
+/* variações de cor (só trocam variáveis) */
+.btn--accent { --btn-bg: var(--accent); --btn-ink: var(--ink); --btn-chip: #fff; }
+.btn--ink    { --btn-bg: var(--ink); --btn-ink: #fff; --btn-chip: var(--accent); --btn-bg-next: var(--accent); --btn-ink-next: var(--ink); --btn-chip-next: #fff; }
+.btn--light  { --btn-bg: #fff; --btn-ink: var(--ink); --btn-chip: var(--accent); }
+.btn--paper  { --btn-bg-next: var(--ink); --btn-ink-next: #fff; --btn-chip-next: var(--accent); }
+.btn--photo.btn--light { --btn-bg-next: var(--accent); --btn-ink-next: var(--ink); --btn-chip-next: #fff; }
+</code></pre>
+</aside>
+
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

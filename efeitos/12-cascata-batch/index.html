@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12 · Entrada em cascata (ScrollTrigger.batch) — Efeitos LP Clínica</title>
+<meta name="description" content="Vários itens aparecem em sequência, sobem e ganham opacidade. O batch agrupa os que entram na tela juntos e anima todos de uma vez.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>12</b>Entrada em cascata (ScrollTrigger.batch)</span>
+  <button type="button" class="bar__btn" data-replay>↻ Repetir</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="tiles">
+  <p class="hint">Entrada em cascata</p>
+  <div class="tiles__grid">
+    <article class="tile"><span>01</span><h3>Agendamento</h3><p>Escolha o melhor horário.</p></article>
+    <article class="tile"><span>02</span><h3>Avaliação</h3><p>Exame e conversa sem pressa.</p></article>
+    <article class="tile"><span>03</span><h3>Planejamento</h3><p>Plano feito sob medida.</p></article>
+    <article class="tile"><span>04</span><h3>Tratamento</h3><p>Acompanhamento próximo.</p></article>
+    <article class="tile"><span>05</span><h3>Manutenção</h3><p>Consultas periódicas.</p></article>
+    <article class="tile"><span>06</span><h3>Resultado</h3><p>O sorriso que você queria.</p></article>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="tiles"&gt;
+  &lt;p class="hint"&gt;Entrada em cascata&lt;/p&gt;
+  &lt;div class="tiles__grid"&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;01&lt;/span&gt;&lt;h3&gt;Agendamento&lt;/h3&gt;&lt;p&gt;Escolha o melhor horário.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;02&lt;/span&gt;&lt;h3&gt;Avaliação&lt;/h3&gt;&lt;p&gt;Exame e conversa sem pressa.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;03&lt;/span&gt;&lt;h3&gt;Planejamento&lt;/h3&gt;&lt;p&gt;Plano feito sob medida.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;04&lt;/span&gt;&lt;h3&gt;Tratamento&lt;/h3&gt;&lt;p&gt;Acompanhamento próximo.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;05&lt;/span&gt;&lt;h3&gt;Manutenção&lt;/h3&gt;&lt;p&gt;Consultas periódicas.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class="tile"&gt;&lt;span&gt;06&lt;/span&gt;&lt;h3&gt;Resultado&lt;/h3&gt;&lt;p&gt;O sorriso que você queria.&lt;/p&gt;&lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.tiles { min-height: 100svh; display: grid; align-content: center; justify-items: center; padding: 96px 5vw; }
+.tiles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: min(1000px, 100%); margin-top: 1.5rem; }
+.tile { padding: 28px; background: var(--paper); border-radius: var(--r-lg); }
+.tile span { font-family: var(--serif); font-style: italic; color: var(--muted); }
+.tile h3 { margin-top: 1.5rem; font-size: 1.35rem; font-weight: 400; letter-spacing: -.03em; }
+.tile p { margin-top: .3em; color: var(--muted); }
+@media (max-width: 700px) { .tiles__grid { grid-template-columns: 1fr; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const tiles = gsap.utils.toArray('.tile');
+
+// começam escondidos (evita o "piscar" antes de animar)
+gsap.set(tiles, { autoAlpha: 0, y: 50 });
+
+const play = (items) =&gt; gsap.to(items, {
+  autoAlpha: 1, y: 0, duration: 1, stagger: 0.09, ease: 'expo.out', overwrite: true
+});
+
+// o batch junta quem entra na tela ao mesmo tempo e entrega todos de uma vez
+ScrollTrigger.batch(tiles, {
+  start: 'top 92%',
+  once: true,
+  onEnter: (items) =&gt; play(items)
+});
+
+window.replay = () =&gt; {
+  gsap.set(tiles, { autoAlpha: 0, y: 50 });
+  play(tiles);
+};
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

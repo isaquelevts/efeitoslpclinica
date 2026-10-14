@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 · Linhas subindo por trás de uma máscara — Efeitos LP Clínica</title>
+<meta name="description" content="O parágrafo é dividido em linhas e cada uma sobe de dentro de uma máscara, como se o texto fosse impresso na hora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>06</b>Linhas subindo por trás de uma máscara</span>
+  <button type="button" class="bar__btn" data-replay>↻ Repetir</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s">
+  <div>
+    <p class="hint">Linhas com máscara</p>
+    <p class="mask-text">Ortodontia moderna e atendimento sem pressa, com uma especialista que acompanha você do primeiro exame ao sorriso final. Cada detalhe pensado para o seu conforto, do primeiro contato até o resultado.</p>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s"&gt;
+  &lt;div&gt;
+    &lt;p class="hint"&gt;Linhas com máscara&lt;/p&gt;
+    &lt;p class="mask-text"&gt;Ortodontia moderna e atendimento sem pressa, com uma especialista que acompanha você do primeiro exame ao sorriso final. Cada detalhe pensado para o seu conforto, do primeiro contato até o resultado.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.mask-text {
+  max-width: 26em; margin: 1.5rem auto 0; text-align: left;
+  font-size: clamp(1.25rem, 2.6vw, 2rem); line-height: 1.35; letter-spacing: -.03em;
+}
+/* deixa respirar embaixo para a máscara não cortar letras com cauda (g, p, y) */
+.line-mask { overflow-clip-margin: .22em; }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger, SplitText);
+
+let anim;
+
+document.fonts.ready.then(() =&gt; {
+  SplitText.create('.mask-text', {
+    type: 'lines',
+    mask: 'lines',              // cada linha ganha um "recorte" (overflow: clip)
+    linesClass: 'line',         // o recorte recebe a classe "line-mask" (usada no CSS)
+    autoSplit: true,
+    onSplit(self) {
+      anim = gsap.from(self.lines, {
+        yPercent: 110,          // começa abaixo da máscara, escondida
+        duration: 1.1, stagger: 0.09, ease: 'expo.out',
+        scrollTrigger: { trigger: '.mask-text', start: 'top 88%', once: true }
+      });
+      return anim;
+    }
+  });
+});
+
+window.replay = () =&gt; anim &amp;&amp; anim.restart();
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.deck-wrap { padding: 12vh 5vw; }
+.deck { position: relative; width: min(1100px, 100%); margin: 0 auto; aspect-ratio: 1176 / 1293; }
+
+/* cada card desce um "degrau" para a direita e para baixo (--step: 0, 1, 2) */
+.card {
+  position: absolute; left: calc(var(--step) * 25.51%); top: calc(var(--step) * 33.952%);
+  width: 48.98%; aspect-ratio: 576 / 415; overflow: hidden;
+  border: 2px solid #fff; border-radius: var(--r-lg); z-index: calc(var(--step) + 1);
+}
+.card__img { position: absolute; inset: 0; }
+.card__foot { position: absolute; inset: auto 12px 12px; padding: 14px 20px 20px; background: #fff; border-radius: var(--r-md); }
+.card__foot h3 { font-size: 1.3rem; font-weight: 400; letter-spacing: -.03em; }
+.card__foot p { margin-top: .3em; color: var(--muted); font-size: .95rem; }
+
+@media (max-width: 700px) {
+  .deck { aspect-ratio: auto; display: grid; gap: 20px; }
+  .card { position: relative; left: auto; top: auto; width: 100%; aspect-ratio: 4 / 3; }
+}

@@ -1,0 +1,26 @@
+.faq { min-height: 100svh; display: grid; grid-template-columns: minmax(0, 320px) 1fr; gap: 3vw; align-content: center; padding: 96px 5vw; }
+.faq__heading { font-size: clamp(1.75rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -.05em; font-weight: 400; align-self: start; }
+.faq__list { display: grid; gap: 16px; }
+.faq__item { background: var(--paper); border-radius: var(--r-lg); }
+.faq__item button { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; padding: 22px; text-align: left; }
+.faq__q { font-size: 1.35rem; line-height: 1.3; letter-spacing: -.05em; }
+
+.faq__mark {
+  position: relative; display: grid; flex: none; place-items: center; width: 48px; height: 48px;
+  background: var(--accent); border-radius: var(--r-md);
+  transition: color .45s cubic-bezier(.5, 1, .89, 1), background-color .45s cubic-bezier(.5, 1, .89, 1);
+}
+.faq__item button:hover .faq__mark { background: var(--ink); color: var(--accent); }
+.faq__mark svg { grid-area: 1 / 1; width: 22px; transition: opacity .45s cubic-bezier(.5, 1, .89, 1), rotate .45s cubic-bezier(.5, 1, .89, 1); }
+.faq__minus { opacity: 0; }
+.faq__item[data-open] .faq__plus { opacity: 0; rotate: 90deg; }
+.faq__item[data-open] .faq__minus { opacity: 1; }
+
+/* o truque: a resposta é uma grid de 1 linha que vai de 0fr (fechada) a 1fr (aberta) */
+.faq__answer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.5, 1, .89, 1); }
+.faq__item[data-open] .faq__answer { grid-template-rows: 1fr; }
+.faq__answer > div { min-height: 0; overflow: hidden; }
+.faq__answer p { padding: 0 22px 22px; max-width: 46em; color: var(--muted); }
+
+@media (max-width: 800px) { .faq { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .faq__answer, .faq__mark, .faq__mark svg { transition: none; } }

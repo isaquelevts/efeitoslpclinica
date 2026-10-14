@@ -1,0 +1,5 @@
+.mag-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+.mag-zone { display: grid; place-items: center; padding: 56px; }         /* área maior que o botão, para o efeito aparecer */
+.mag { display: grid; place-items: center; width: 96px; height: 96px; background: var(--accent); border-radius: 24px; font-size: 1.6rem; }
+.mag svg { width: 30px; }
+.mag--pill { width: auto; padding: 0 36px; font-size: 1rem; background: var(--ink); color: #fff; }

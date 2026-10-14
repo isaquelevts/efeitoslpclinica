@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>22 · Carrossel automático infinito (faixa) — Efeitos LP Clínica</title>
+<meta name="description" content="Uma faixa de cards desliza sozinha, para sempre e sem emenda: uma cópia dos cards vem logo atrás, e a posição &quot;dá a volta&quot; no momento certo. Dá para arrastar com o dedo ou o mouse.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>22</b>Carrossel automático infinito (faixa)</span>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="marq">
+  <p class="hint">Arraste ou deixe rolar sozinho</p>
+  <div class="deck">
+    <a class="card ph ph--a" href="#"><b>1</b><span>Aparelhos</span></a>
+    <a class="card ph ph--b" href="#"><b>2</b><span>Facetas e lentes</span></a>
+    <a class="card ph ph--c" href="#"><b>3</b><span>Clínica geral</span></a>
+    <a class="card ph ph--d" href="#"><b>4</b><span>Restaurações</span></a>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="marq"&gt;
+  &lt;p class="hint"&gt;Arraste ou deixe rolar sozinho&lt;/p&gt;
+  &lt;div class="deck"&gt;
+    &lt;a class="card ph ph--a" href="#"&gt;&lt;b&gt;1&lt;/b&gt;&lt;span&gt;Aparelhos&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="card ph ph--b" href="#"&gt;&lt;b&gt;2&lt;/b&gt;&lt;span&gt;Facetas e lentes&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="card ph ph--c" href="#"&gt;&lt;b&gt;3&lt;/b&gt;&lt;span&gt;Clínica geral&lt;/span&gt;&lt;/a&gt;
+    &lt;a class="card ph ph--d" href="#"&gt;&lt;b&gt;4&lt;/b&gt;&lt;span&gt;Restaurações&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>/* minmax(0, 1fr) impede que a faixa (larga) estique a coluna da grade */
+.marq { min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: 2rem; padding: 96px 0; background: var(--paper); text-align: center; }
+.marq .hint { margin: 0; }
+.deck { overflow: hidden; touch-action: pan-y; cursor: grab; }
+.track { display: flex; gap: 20px; width: max-content; padding-left: 24px; will-change: transform; }
+
+.card {
+  position: relative; flex: 0 0 auto; width: min(78vw, 340px); aspect-ratio: 4 / 5; overflow: hidden;
+  display: grid; align-content: space-between; padding: 22px; border-radius: var(--r-lg); color: #fff; text-align: left;
+  user-select: none; -webkit-user-select: none;
+}
+.card b { position: relative; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 3rem; text-shadow: 0 2px 20px #0005; }
+.card span { position: relative; padding: 12px 16px; background: #fff; color: var(--ink); border-radius: var(--r-md); font-size: 1.15rem; letter-spacing: -.03em; }
+</code></pre>
+  <pre data-pane="js"><code>/* Os cards ficam numa faixa que desliza sem parar. Uma cópia da faixa vem logo atrás:
+   quando a primeira sai pela esquerda, a posição volta uma "volta" inteira (setW)
+   e o movimento nunca tem emenda. */
+(() =&gt; {
+  const deck = document.querySelector('.deck');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const SPEED = 60;                                    // px por segundo
+
+  // monta a faixa: cards originais + uma cópia (escondida do leitor de tela e do teclado)
+  const originals = [...deck.querySelectorAll('.card')];
+  const track = document.createElement('div');
+  track.className = 'track';
+  originals.forEach((c) =&gt; track.appendChild(c));
+  originals.forEach((c) =&gt; {
+    const k = c.cloneNode(true);
+    k.setAttribute('aria-hidden', 'true');
+    k.tabIndex = -1;
+    track.appendChild(k);
+  });
+  deck.appendChild(track);
+
+  let visible = false, dragging = false;
+  let x = 0, setW = 0, velocity = 0, last = 0, lastX = 0, moved = 0;
+
+  // largura de UMA volta = soma dos cards originais + espaços entre eles
+  const measure = () =&gt; {
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    setW = originals.reduce((sum, c) =&gt; sum + c.offsetWidth + gap, 0);
+  };
+  const wrap = () =&gt; {                                  // mantém x sempre dentro de uma volta
+    if (!setW) return;
+    while (x &lt;= -setW) x += setW;
+    while (x &gt; 0) x -= setW;
+  };
+  const apply = () =&gt; { track.style.transform = `translate3d(${x}px, 0, 0)`; };
+
+  const loop = (now) =&gt; {
+    const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
+    last = now;
+    const target = reduce.matches || !visible || dragging ? 0 : SPEED;
+    velocity += (target - velocity) * Math.min(1, dt * 3);   // acelera / desacelera suave
+    if (velocity &gt; 0.01 &amp;&amp; !dragging) { x -= velocity * dt; wrap(); apply(); }
+    requestAnimationFrame(loop);
+  };
+
+  /* ---------- arrasto (mouse e dedo) ---------- */
+  deck.addEventListener('pointerdown', (e) =&gt; {
+    if (e.pointerType === 'mouse' &amp;&amp; e.button !== 0) return;
+    dragging = true; moved = 0; lastX = e.clientX;
+  });
+  window.addEventListener('pointermove', (e) =&gt; {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    lastX = e.clientX; moved += Math.abs(dx);
+    x += dx; wrap(); apply();
+  });
+  const end = () =&gt; { dragging = false; };                // ao soltar, o giro retoma suave
+  window.addEventListener('pointerup', end);
+  window.addEventListener('pointercancel', end);
+  // se arrastou, não abre o link do card ao soltar
+  deck.addEventListener('click', (e) =&gt; { if (moved &gt; 6) { e.preventDefault(); e.stopPropagation(); } moved = 0; }, true);
+  deck.addEventListener('dragstart', (e) =&gt; e.preventDefault());
+
+  new IntersectionObserver(([e]) =&gt; { visible = e.isIntersecting; }, { threshold: 0.05 }).observe(deck);
+  new ResizeObserver(() =&gt; { measure(); wrap(); apply(); }).observe(deck);
+
+  measure();
+  requestAnimationFrame(loop);
+})();
+</code></pre>
+</aside>
+
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.mask-text {
+  max-width: 26em; margin: 1.5rem auto 0; text-align: left;
+  font-size: clamp(1.25rem, 2.6vw, 2rem); line-height: 1.35; letter-spacing: -.03em;
+}
+/* deixa respirar embaixo para a máscara não cortar letras com cauda (g, p, y) */
+.line-mask { overflow-clip-margin: .22em; }

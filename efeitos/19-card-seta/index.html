@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>19 · Card com seta que troca e zoom na foto — Efeitos LP Clínica</title>
+<meta name="description" content="No hover, a foto dá zoom, a seta do botão sai por um canto enquanto outra entra pelo canto oposto, e o &quot;Saiba mais&quot; ganha sublinhado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>19</b>Card com seta que troca e zoom na foto</span>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div>
+    <p class="hint" style="margin:0 0 1.5rem">Passe o mouse no card</p>
+    <a class="card" href="#">
+      <div class="card__img ph ph--a"></div>
+      <span class="go"><span class="go__mask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </span></span>
+      <div class="card__foot">
+        <h3>Aparelhos ortodônticos</h3>
+        <p>Metálico ou estético, com planejamento para o seu caso.</p>
+        <span class="more">Saiba mais</span>
+      </div>
+    </a>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div&gt;
+    &lt;p class="hint" style="margin:0 0 1.5rem"&gt;Passe o mouse no card&lt;/p&gt;
+    &lt;a class="card" href="#"&gt;
+      &lt;div class="card__img ph ph--a"&gt;&lt;/div&gt;
+      &lt;span class="go"&gt;&lt;span class="go__mask"&gt;
+        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M7 17L17 7M8 7h9v9"/&gt;&lt;/svg&gt;
+        &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M7 17L17 7M8 7h9v9"/&gt;&lt;/svg&gt;
+      &lt;/span&gt;&lt;/span&gt;
+      &lt;div class="card__foot"&gt;
+        &lt;h3&gt;Aparelhos ortodônticos&lt;/h3&gt;
+        &lt;p&gt;Metálico ou estético, com planejamento para o seu caso.&lt;/p&gt;
+        &lt;span class="more"&gt;Saiba mais&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+  <pre data-pane="css"><code>.card { position: relative; display: block; width: min(560px, 90vw); aspect-ratio: 576 / 415; overflow: hidden; border: 2px solid #fff; border-radius: var(--r-lg); text-align: left; }
+.card__img { position: absolute; inset: 0; scale: 1; transition: scale .5s var(--e-out); }
+.card__foot { position: absolute; inset: auto 12px 12px; padding: 14px 22px 22px; background: #fff; border-radius: var(--r-md); }
+.card__foot h3 { font-size: 1.4rem; font-weight: 400; letter-spacing: -.03em; }
+.card__foot p { margin-top: .3em; color: var(--muted); }
+
+/* botão com duas setas: uma visível, outra esperando no canto oposto */
+.go { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 56px; height: 56px; background: var(--accent); border-radius: var(--r-md); transition: scale .5s var(--e-out); }
+.go__mask { display: grid; place-items: center; aspect-ratio: 1; overflow: clip; }
+.go svg { grid-area: 1 / 1; width: 28px; transition: translate .5s var(--e-out); }
+.go svg:last-child { translate: -100% 100%; }
+
+/* sublinhado que se desenha */
+.more { position: relative; display: inline-block; margin-top: .75em; font-weight: 700; letter-spacing: -.05em; }
+.more::after { content: ""; position: absolute; inset-inline: 0; bottom: .06em; height: 1px; background: currentColor; transform-origin: left; scale: 0 1; transition: scale .5s var(--e-out); }
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card__img { scale: 1.05; }
+  .card:hover .go { scale: .96; }
+  .card:hover .go svg:first-child { translate: 100% -100%; }
+  .card:hover .go svg:last-child { translate: 0 0; }
+  .card:hover .more::after { scale: 1 1; }
+}
+</code></pre>
+</aside>
+
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

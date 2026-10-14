@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13 · Linhas que se desenham — Efeitos LP Clínica</title>
+<meta name="description" content="Os separadores de uma lista se desenham da esquerda para a direita, em sequência, enquanto o texto sobe. Usa uma variável CSS animada pelo GSAP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>13</b>Linhas que se desenham</span>
+  <button type="button" class="bar__btn" data-replay>↻ Repetir</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="rows-demo">
+  <h2 class="big">Horários</h2>
+  <dl class="rows">
+    <div class="row"><dt>Segunda a sábado</dt><dd>8h30 às 19h</dd></div>
+    <div class="row"><dt>Atendimento</dt><dd>Somente com agendamento</dd></div>
+    <div class="row"><dt>Agendamentos</dt><dd>(94) 99999-9999</dd></div>
+  </dl>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="rows-demo"&gt;
+  &lt;h2 class="big"&gt;Horários&lt;/h2&gt;
+  &lt;dl class="rows"&gt;
+    &lt;div class="row"&gt;&lt;dt&gt;Segunda a sábado&lt;/dt&gt;&lt;dd&gt;8h30 às 19h&lt;/dd&gt;&lt;/div&gt;
+    &lt;div class="row"&gt;&lt;dt&gt;Atendimento&lt;/dt&gt;&lt;dd&gt;Somente com agendamento&lt;/dd&gt;&lt;/div&gt;
+    &lt;div class="row"&gt;&lt;dt&gt;Agendamentos&lt;/dt&gt;&lt;dd&gt;(94) 99999-9999&lt;/dd&gt;&lt;/div&gt;
+  &lt;/dl&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.rows-demo { min-height: 100svh; display: grid; align-content: center; justify-items: center; padding: 96px 5vw; }
+.rows { width: min(560px, 100%); margin-top: 2.5rem; }
+.row { position: relative; display: flex; justify-content: space-between; gap: 1rem; padding: 1.1em 0; }
+.row dd { color: var(--muted); text-align: right; }
+
+/* a linha é um ::after que escala de 0 a 1 pela variável --rule */
+.row::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 1px; background: rgb(22 20 18 / .2);
+  transform-origin: left; transform: scaleX(var(--rule, 1));
+}
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const rows = gsap.utils.toArray('.row');
+
+const tl = gsap.timeline({
+  scrollTrigger: { trigger: '.rows', start: 'top 85%', once: true }
+});
+
+tl
+  // o GSAP anima a variável CSS --rule de 0 até 1 em cada linha
+  .fromTo(rows, { '--rule': 0 }, { '--rule': 1, duration: 1.2, stagger: 0.12, ease: 'expo.inOut' }, 0)
+  // e o texto sobe logo depois
+  .from(rows.flatMap((r) =&gt; [...r.children]), { y: 18, autoAlpha: 0, duration: 0.9, stagger: 0.06 }, 0.2);
+
+window.replay = () =&gt; tl.restart();
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

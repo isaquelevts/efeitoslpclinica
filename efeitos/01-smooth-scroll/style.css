@@ -1,0 +1,10 @@
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 250; background: #16141214; }
+.progress i { display: block; height: 100%; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+
+.jump {
+  position: fixed; bottom: 20px; left: 50%; translate: -50% 0; z-index: 150;
+  display: flex; gap: 4px; padding: 6px; background: #fff; border-radius: var(--r-md);
+  box-shadow: 0 8px 24px #1614121a;
+}
+.jump a { padding: 8px 16px; border-radius: 10px; font-size: 14px; }
+.jump a:hover { background: var(--accent); }

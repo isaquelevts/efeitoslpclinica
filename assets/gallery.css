@@ -1,0 +1,36 @@
+/* Galeria inicial */
+body.gallery { background: var(--paper); }
+.top { padding: clamp(64px, 12vh, 140px) 5vw 40px; max-width: 1240px; margin: 0 auto; }
+.top__eyebrow { font-size: 14px; letter-spacing: -.02em; color: var(--muted); }
+.top__title { margin-top: .6rem; font-size: clamp(2.75rem, 8vw, 7rem); line-height: 1; letter-spacing: -.06em; font-weight: 400; }
+.top__lead { margin-top: 1.5rem; max-width: 34em; font-size: 1.15rem; color: var(--muted); }
+.top__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.75rem 0 0; padding: 0; list-style: none; }
+.top__chips li { padding: 6px 14px; border-radius: 999px; background: #fff; font-size: 13px; letter-spacing: -.02em; }
+
+.list { max-width: 1240px; margin: 0 auto; padding: 24px 5vw 80px; }
+.grp { margin-top: 56px; }
+.grp__t { display: flex; align-items: baseline; gap: 12px; font-size: clamp(1.5rem, 3vw, 2.25rem); letter-spacing: -.05em; font-weight: 400; }
+.grp__t small { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--muted); }
+.grp__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+
+.fx {
+  position: relative; display: flex; flex-direction: column; gap: 10px; padding: 24px 24px 22px;
+  background: #fff; border-radius: var(--r-lg); transition: background-color .3s, translate .5s var(--e-out), box-shadow .5s var(--e-out);
+}
+.fx__n { font-family: var(--serif); font-style: italic; color: var(--muted); }
+.fx__t { font-size: 1.35rem; line-height: 1.2; letter-spacing: -.04em; font-weight: 400; padding-right: 36px; }
+.fx__d { font-size: .95rem; color: var(--muted); }
+.fx__tags { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 0; padding: 12px 0 0; list-style: none; }
+.fx__tags li { padding: 3px 10px; border-radius: 999px; background: var(--paper); font-size: 12px; }
+.fx__go { position: absolute; top: 20px; right: 20px; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--accent); transition: rotate .4s var(--e-out), background-color .3s; }
+@media (hover: hover) and (pointer: fine) {
+  .fx:hover { translate: 0 -4px; box-shadow: 0 18px 40px -18px #16141240; }
+  .fx:hover .fx__go { background: var(--ink); color: #fff; rotate: 45deg; }
+}
+
+.foot { max-width: 1240px; margin: 0 auto; padding: 0 5vw 64px; display: flex; flex-wrap: wrap; gap: 8px 32px; justify-content: space-between; font-size: 14px; color: var(--muted); }
+.foot code { padding: 2px 6px; border-radius: 6px; background: #fff; font-size: 13px; }
+.foot a:hover { color: var(--ink); }
+
+@media (max-width: 980px) { .grp__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .grp__grid { grid-template-columns: 1fr; } }

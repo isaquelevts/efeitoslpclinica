@@ -1,0 +1,10 @@
+.rows-demo { min-height: 100svh; display: grid; align-content: center; justify-items: center; padding: 96px 5vw; }
+.rows { width: min(560px, 100%); margin-top: 2.5rem; }
+.row { position: relative; display: flex; justify-content: space-between; gap: 1rem; padding: 1.1em 0; }
+.row dd { color: var(--muted); text-align: right; }
+
+/* a linha é um ::after que escala de 0 a 1 pela variável --rule */
+.row::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 1px; background: rgb(22 20 18 / .2);
+  transform-origin: left; transform: scaleX(var(--rule, 1));
+}

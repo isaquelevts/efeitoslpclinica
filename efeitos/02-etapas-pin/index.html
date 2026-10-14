@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 · Seção que trava e acende as etapas — Efeitos LP Clínica</title>
+<meta name="description" content="A seção fica fixa na tela enquanto uma linha avança e acende cada etapa, uma por vez (ScrollTrigger com pin + scrub).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>02</b>Seção que trava e acende as etapas</span>
+  <button type="button" class="bar__btn" data-replay>↻ Voltar ao topo</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div>
+    <h1 class="big">Seção que trava</h1>
+    <p class="lead">Role: a página para e a linha acende cada etapa.</p>
+    <p class="hint">Role para baixo ↓</p>
+  </div>
+</section>
+
+<section class="steps">
+  <h2 class="steps__heading">Do primeiro contato<br>ao sorriso final</h2>
+  <ol class="steps__track">
+    <li class="steps__rail" aria-hidden="true"><span class="steps__fill"></span></li>
+    <li class="step"><span class="step__dot">01</span><h3 class="step__title">Agendamento</h3><p class="step__body">Fale com a equipe e escolha o melhor horário para você.</p><span class="step__tag">Pelo WhatsApp</span></li>
+    <li class="step"><span class="step__dot">02</span><h3 class="step__title">Avaliação</h3><p class="step__body">Exame clínico detalhado e uma conversa sem pressa.</p><span class="step__tag">Exame + fotos</span></li>
+    <li class="step"><span class="step__dot">03</span><h3 class="step__title">Planejamento</h3><p class="step__body">Um plano personalizado, com prazos explicados com clareza.</p><span class="step__tag">Prazos</span></li>
+    <li class="step"><span class="step__dot">04</span><h3 class="step__title">Tratamento</h3><p class="step__body">Acompanhamento próximo até o resultado e depois dele.</p><span class="step__tag">Sorriso final</span></li>
+  </ol>
+</section>
+
+<section class="s s--ink"><h2 class="big">Fim da seção</h2></section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div&gt;
+    &lt;h1 class="big"&gt;Seção que trava&lt;/h1&gt;
+    &lt;p class="lead"&gt;Role: a página para e a linha acende cada etapa.&lt;/p&gt;
+    &lt;p class="hint"&gt;Role para baixo ↓&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="steps"&gt;
+  &lt;h2 class="steps__heading"&gt;Do primeiro contato&lt;br&gt;ao sorriso final&lt;/h2&gt;
+  &lt;ol class="steps__track"&gt;
+    &lt;li class="steps__rail" aria-hidden="true"&gt;&lt;span class="steps__fill"&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="step"&gt;&lt;span class="step__dot"&gt;01&lt;/span&gt;&lt;h3 class="step__title"&gt;Agendamento&lt;/h3&gt;&lt;p class="step__body"&gt;Fale com a equipe e escolha o melhor horário para você.&lt;/p&gt;&lt;span class="step__tag"&gt;Pelo WhatsApp&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="step"&gt;&lt;span class="step__dot"&gt;02&lt;/span&gt;&lt;h3 class="step__title"&gt;Avaliação&lt;/h3&gt;&lt;p class="step__body"&gt;Exame clínico detalhado e uma conversa sem pressa.&lt;/p&gt;&lt;span class="step__tag"&gt;Exame + fotos&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="step"&gt;&lt;span class="step__dot"&gt;03&lt;/span&gt;&lt;h3 class="step__title"&gt;Planejamento&lt;/h3&gt;&lt;p class="step__body"&gt;Um plano personalizado, com prazos explicados com clareza.&lt;/p&gt;&lt;span class="step__tag"&gt;Prazos&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="step"&gt;&lt;span class="step__dot"&gt;04&lt;/span&gt;&lt;h3 class="step__title"&gt;Tratamento&lt;/h3&gt;&lt;p class="step__body"&gt;Acompanhamento próximo até o resultado e depois dele.&lt;/p&gt;&lt;span class="step__tag"&gt;Sorriso final&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/section&gt;
+
+&lt;section class="s s--ink"&gt;&lt;h2 class="big"&gt;Fim da seção&lt;/h2&gt;&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.steps { padding: 96px 5vw; background: #fff; }
+.steps__heading { font-size: clamp(2rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -.05em; font-weight: 400; }
+
+.steps__track {
+  --dot: 56px; position: relative; display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-top: 90px; padding: 0; list-style: none;
+}
+.steps__rail { position: absolute; left: 0; right: 0; top: calc(var(--dot) / 2); height: 1px; background: rgb(22 20 18 / .12); }
+.steps__fill { position: absolute; inset: 0; background: var(--ink); transform-origin: left; transform: scaleX(var(--p, 1)); }
+
+.step { position: relative; padding-right: 1rem; }
+.step__dot {
+  position: relative; z-index: 1; display: grid; place-items: center; width: var(--dot); height: var(--dot);
+  font-family: var(--serif); font-style: italic; font-size: 1.3rem; border-radius: var(--r-md);
+  background: var(--accent); color: var(--ink);
+}
+.step__title { margin-top: 32px; font-size: 1.4rem; font-weight: 400; letter-spacing: -.04em; }
+.step__body { margin-top: .5em; max-width: 19em; color: var(--muted); }
+.step__tag { display: inline-block; margin-top: 1.25em; padding: .35em .8em; font-size: 14px; background: var(--paper); border-radius: 8px; }
+
+@media (max-width: 760px) { .steps__track { grid-template-columns: repeat(2, 1fr); row-gap: 40px; } .steps__rail { display: none; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const steps = gsap.utils.toArray('.step');
+const css = getComputedStyle(document.documentElement);
+const accent = css.getPropertyValue('--accent').trim();
+const paper = css.getPropertyValue('--paper').trim();
+const texts = (step) =&gt; step.querySelectorAll('.step__title, .step__body, .step__tag');
+
+// estado inicial: etapas "apagadas", esperando a linha chegar
+gsap.set('.steps__fill', { '--p': 0 });
+steps.forEach((step) =&gt; {
+  gsap.set(step.querySelector('.step__dot'), { backgroundColor: paper, color: 'rgba(22,20,18,.35)' });
+  gsap.set(texts(step), { autoAlpha: 0.15, y: 24 });
+});
+
+// a seção fica fixa (pin) enquanto a linha percorre as etapas (scrub)
+const tl = gsap.timeline({
+  defaults: { ease: 'none' },
+  scrollTrigger: { trigger: '.steps', start: 'center center', end: '+=140%', pin: true, scrub: 1 }
+});
+
+tl.to('.steps__fill', { '--p': 1, duration: steps.length }, 0);   // a linha avança
+
+steps.forEach((step, i) =&gt; {
+  const at = i * 0.92;                                            // cada etapa acende quando a linha passa
+  const dot = step.querySelector('.step__dot');
+  tl.to(dot, { backgroundColor: accent, color: '#161412', duration: 0.3 }, at)
+    .fromTo(dot, { scale: 0.85 }, { scale: 1, duration: 0.5, ease: 'back.out(3)' }, at)
+    .to(texts(step), { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, at);
+});
+
+window.replay = () =&gt; scrollTo({ top: 0 });
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

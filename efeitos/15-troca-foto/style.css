@@ -1,0 +1,17 @@
+.swap { min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: center; padding: 96px 5vw; }
+.swap__side { display: flex; flex-direction: column; gap: 1rem; max-width: 520px; }
+.swap__title { font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.08; letter-spacing: -.05em; font-weight: 400; }
+
+.swap__bios { display: grid; min-height: 4.5em; }
+.swap__bios p { grid-area: 1 / 1; max-width: 26em; color: var(--muted); transition: opacity .4s ease, translate .4s ease; }
+.swap__bios p[aria-hidden="true"] { opacity: 0; translate: 0 .5rem; pointer-events: none; }
+
+.swap__list { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.swap__list button { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; font-size: 1.5rem; letter-spacing: -.05em; color: var(--muted); text-align: left; transition: color .3s; }
+.swap__list button i { width: 2.4em; font-family: var(--serif); font-size: 1.2rem; letter-spacing: -.02em; }
+.swap__list button[aria-pressed="true"], .swap__list button:hover { color: var(--ink); }
+
+.swap__stage { position: relative; aspect-ratio: 1; max-height: 80svh; border-radius: var(--r-md); overflow: hidden; background: var(--paper); }
+.shot { position: absolute; inset: 0; transition: opacity .6s ease; }
+.shot[aria-hidden="true"] { opacity: 0; }
+@media (max-width: 800px) { .swap { grid-template-columns: 1fr; } }

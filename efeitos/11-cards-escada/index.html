@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11 · Cards em escada com profundidade — Efeitos LP Clínica</title>
+<meta name="description" content="Três cards em degraus: cada um entra subindo com uma leve rotação e depois anda num ritmo diferente na rolagem, criando profundidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>11</b>Cards em escada com profundidade</span>
+  <button type="button" class="bar__btn" data-replay>↻ Recomeçar</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div>
+    <h1 class="big">Cards em escada</h1>
+    <p class="hint">Role para baixo ↓</p>
+  </div>
+</section>
+
+<section class="deck-wrap">
+  <div class="deck">
+    <article class="card" style="--step: 0"><div class="card__img ph ph--a"></div><div class="card__foot"><h3>Aparelhos ortodônticos</h3><p>Metálico ou estético, com planejamento para o seu caso.</p></div></article>
+    <article class="card" style="--step: 1"><div class="card__img ph ph--b"></div><div class="card__foot"><h3>Facetas e lentes</h3><p>Cor, forma e tamanho em harmonia.</p></div></article>
+    <article class="card" style="--step: 2"><div class="card__img ph ph--c"></div><div class="card__foot"><h3>Clínica geral</h3><p>Limpeza, restaurações, canal e extrações.</p></div></article>
+  </div>
+</section>
+
+<section class="s s--paper"></section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div&gt;
+    &lt;h1 class="big"&gt;Cards em escada&lt;/h1&gt;
+    &lt;p class="hint"&gt;Role para baixo ↓&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="deck-wrap"&gt;
+  &lt;div class="deck"&gt;
+    &lt;article class="card" style="--step: 0"&gt;&lt;div class="card__img ph ph--a"&gt;&lt;/div&gt;&lt;div class="card__foot"&gt;&lt;h3&gt;Aparelhos ortodônticos&lt;/h3&gt;&lt;p&gt;Metálico ou estético, com planejamento para o seu caso.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;
+    &lt;article class="card" style="--step: 1"&gt;&lt;div class="card__img ph ph--b"&gt;&lt;/div&gt;&lt;div class="card__foot"&gt;&lt;h3&gt;Facetas e lentes&lt;/h3&gt;&lt;p&gt;Cor, forma e tamanho em harmonia.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;
+    &lt;article class="card" style="--step: 2"&gt;&lt;div class="card__img ph ph--c"&gt;&lt;/div&gt;&lt;div class="card__foot"&gt;&lt;h3&gt;Clínica geral&lt;/h3&gt;&lt;p&gt;Limpeza, restaurações, canal e extrações.&lt;/p&gt;&lt;/div&gt;&lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="s s--paper"&gt;&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.deck-wrap { padding: 12vh 5vw; }
+.deck { position: relative; width: min(1100px, 100%); margin: 0 auto; aspect-ratio: 1176 / 1293; }
+
+/* cada card desce um "degrau" para a direita e para baixo (--step: 0, 1, 2) */
+.card {
+  position: absolute; left: calc(var(--step) * 25.51%); top: calc(var(--step) * 33.952%);
+  width: 48.98%; aspect-ratio: 576 / 415; overflow: hidden;
+  border: 2px solid #fff; border-radius: var(--r-lg); z-index: calc(var(--step) + 1);
+}
+.card__img { position: absolute; inset: 0; }
+.card__foot { position: absolute; inset: auto 12px 12px; padding: 14px 20px 20px; background: #fff; border-radius: var(--r-md); }
+.card__foot h3 { font-size: 1.3rem; font-weight: 400; letter-spacing: -.03em; }
+.card__foot p { margin-top: .3em; color: var(--muted); font-size: .95rem; }
+
+@media (max-width: 700px) {
+  .deck { aspect-ratio: auto; display: grid; gap: 20px; }
+  .card { position: relative; left: auto; top: auto; width: 100%; aspect-ratio: 4 / 3; }
+}
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+const cards = gsap.utils.toArray('.card');
+
+cards.forEach((card, i) =&gt; {
+  // entrada: sobe girando levemente e assenta
+  gsap.from(card, {
+    yPercent: 40, rotation: (i - 1) * -5, autoAlpha: 0,
+    duration: 1.4, ease: 'expo.out',
+    scrollTrigger: { trigger: card, start: 'top 95%', once: true }
+  });
+
+  // profundidade: cada card anda num ritmo diferente enquanto o bloco cruza a tela
+  gsap.fromTo(card,
+    { y: 40 * i },
+    {
+      y: -40 * i, ease: 'none',
+      scrollTrigger: { trigger: '.deck', start: 'top bottom', end: 'bottom top', scrub: 1 }
+    }
+  );
+});
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

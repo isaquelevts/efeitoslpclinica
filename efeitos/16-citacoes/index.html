@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>16 · Citações com linhas subindo — Efeitos LP Clínica</title>
+<meta name="description" content="Ao trocar de depoimento, as linhas do novo texto sobem de dentro da máscara e o nome entra logo depois.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>16</b>Citações com linhas subindo</span>
+  <button type="button" class="bar__btn" data-replay>↻ Próxima</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="quotes">
+  <div class="quotes__stack">
+    <figure class="q" aria-hidden="false">
+      <blockquote class="q__text">“Explica todo o procedimento e deixa a gente bem tranquilo durante a consulta. Super recomendo!”</blockquote>
+      <figcaption class="q__by"><b>Maria S.</b><span>Paciente</span></figcaption>
+    </figure>
+    <figure class="q" aria-hidden="true">
+      <blockquote class="q__text">“Muito atenciosa, explica tudo pra gente e mostra o antes e depois. Com certeza vou retornar.”</blockquote>
+      <figcaption class="q__by"><b>João P.</b><span>Paciente</span></figcaption>
+    </figure>
+    <figure class="q" aria-hidden="true">
+      <blockquote class="q__text">“Um ambiente acolhedor, organizado e cheio de cuidado em cada detalhe.”</blockquote>
+      <figcaption class="q__by"><b>Ana L.</b><span>Paciente</span></figcaption>
+    </figure>
+  </div>
+  <div class="quotes__ctrl">
+    <button type="button" data-step="-1" aria-label="Depoimento anterior">←</button>
+    <button type="button" data-step="1" aria-label="Próximo depoimento">→</button>
+    <span id="count" aria-live="polite">1 / 3</span>
+  </div>
+</section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="quotes"&gt;
+  &lt;div class="quotes__stack"&gt;
+    &lt;figure class="q" aria-hidden="false"&gt;
+      &lt;blockquote class="q__text"&gt;“Explica todo o procedimento e deixa a gente bem tranquilo durante a consulta. Super recomendo!”&lt;/blockquote&gt;
+      &lt;figcaption class="q__by"&gt;&lt;b&gt;Maria S.&lt;/b&gt;&lt;span&gt;Paciente&lt;/span&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;figure class="q" aria-hidden="true"&gt;
+      &lt;blockquote class="q__text"&gt;“Muito atenciosa, explica tudo pra gente e mostra o antes e depois. Com certeza vou retornar.”&lt;/blockquote&gt;
+      &lt;figcaption class="q__by"&gt;&lt;b&gt;João P.&lt;/b&gt;&lt;span&gt;Paciente&lt;/span&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;figure class="q" aria-hidden="true"&gt;
+      &lt;blockquote class="q__text"&gt;“Um ambiente acolhedor, organizado e cheio de cuidado em cada detalhe.”&lt;/blockquote&gt;
+      &lt;figcaption class="q__by"&gt;&lt;b&gt;Ana L.&lt;/b&gt;&lt;span&gt;Paciente&lt;/span&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+  &lt;/div&gt;
+  &lt;div class="quotes__ctrl"&gt;
+    &lt;button type="button" data-step="-1" aria-label="Depoimento anterior"&gt;←&lt;/button&gt;
+    &lt;button type="button" data-step="1" aria-label="Próximo depoimento"&gt;→&lt;/button&gt;
+    &lt;span id="count" aria-live="polite"&gt;1 / 3&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.quotes { min-height: 100svh; display: grid; align-content: center; padding: 96px 5vw; background: var(--paper); }
+.quotes__stack { display: grid; max-width: 820px; }
+.q { grid-area: 1 / 1; margin: 0; transition: opacity .25s ease; }
+.q[aria-hidden="true"] { opacity: 0; pointer-events: none; }
+.q__text { font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.08; letter-spacing: -.05em; }
+.q__by { display: grid; gap: .25rem; margin-top: 1.75rem; }
+.q__by b { font-weight: 400; font-size: 1.25rem; letter-spacing: -.04em; }
+.q__by span { color: var(--muted); }
+
+.quotes__ctrl { display: flex; align-items: center; gap: 12px; margin-top: 2.5rem; }
+.quotes__ctrl button { display: grid; place-items: center; width: 40px; height: 40px; background: var(--accent); border-radius: 8px; transition: background-color .25s; }
+.quotes__ctrl button:hover { background: #fff; }
+#count { margin-left: .5rem; font-family: var(--serif); font-style: italic; color: var(--muted); }
+
+.line-mask { overflow-clip-margin: .22em; }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(SplitText);
+
+const items = [...document.querySelectorAll('.q')];
+const count = document.getElementById('count');
+let now = 0;
+
+document.fonts.ready.then(() =&gt; {
+  // divide cada citação em linhas com máscara (uma vez)
+  items.forEach((el) =&gt; SplitText.create(el.querySelector('.q__text'), {
+    type: 'lines', mask: 'lines', linesClass: 'line', autoSplit: true
+  }));
+  show(0);
+});
+
+function show(n) {
+  now = (n + items.length) % items.length;
+  items.forEach((el, i) =&gt; el.setAttribute('aria-hidden', String(i !== now)));
+  count.textContent = `${now + 1} / ${items.length}`;
+
+  const item = items[now];
+  // as linhas sobem de dentro da máscara...
+  gsap.fromTo(item.querySelectorAll('.line'),
+    { yPercent: 110 },
+    { yPercent: 0, duration: 1, stagger: 0.07, ease: 'expo.out', overwrite: true });
+  // ...e o nome aparece logo depois
+  gsap.fromTo(item.querySelector('.q__by'),
+    { y: 16, autoAlpha: 0 },
+    { y: 0, autoAlpha: 1, duration: 0.8, delay: 0.2 });
+}
+
+document.querySelectorAll('[data-step]').forEach((b) =&gt;
+  b.addEventListener('click', () =&gt; show(now + Number(b.dataset.step))));
+
+window.replay = () =&gt; show(now + 1);
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.foot { position: relative; height: 560px; padding: 56px 5vw 0; overflow: hidden; background: var(--accent); isolation: isolate; }
+.foot__top { position: relative; z-index: 2; display: flex; gap: 8vw; flex-wrap: wrap; color: #161412b0; }
+.foot__top b { color: var(--ink); font-weight: 600; }
+
+.foot__word {
+  position: absolute; bottom: -.12em; left: 1.5vw; z-index: 0; white-space: nowrap;
+  font-family: var(--wordmark); font-style: italic; font-size: 24vw; line-height: 1; letter-spacing: -.02em; pointer-events: none;
+}
+
+/* leque de 3 cards: posição e rotação fixas pelo CSS; o GSAP só faz a entrada */
+.fan { position: absolute; bottom: -10vw; left: 62vw; z-index: 1; width: 31vw; height: 31vw; pointer-events: none; }
+.fan__card { position: absolute; top: 50%; left: 50%; display: block; width: 15.5vw; height: 19vw; translate: -50% -50%; border-radius: var(--r-md); }
+.fan__card:nth-child(1) { translate: calc(-50% - 5.5vw) calc(-50% + 4vw);   rotate: -15deg; opacity: .45; }
+.fan__card:nth-child(2) { translate: calc(-50% + .75vw) calc(-50% - 2.1vw); rotate: -7deg;  opacity: .8; }
+.fan__card:nth-child(3) { translate: calc(-50% + 7vw)   calc(-50% - 5.2vw); rotate: 4.4deg; }
+@media (max-width: 760px) { .fan { display: none; } .foot__word { font-size: 30vw; } }

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 · Parallax em fotos — Efeitos LP Clínica</title>
+<meta name="description" content="A foto se move dentro da moldura mais devagar que a rolagem. Duas variações: deslizando e com zoom que assenta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Libre+Caslon+Text:ital@1&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/base.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="bar__back" href="../../" aria-label="Todos os efeitos">←<span> Todos</span></a>
+  <span class="bar__title"><b>04</b>Parallax em fotos</span>
+  <button type="button" class="bar__btn" data-replay>↻ Voltar ao topo</button>
+  <button type="button" class="bar__btn" data-code aria-expanded="false">{ } Código</button>
+</header>
+
+<main>
+<section class="s s--paper">
+  <div>
+    <h1 class="big">Parallax</h1>
+    <p class="lead">A foto anda mais devagar que a página.</p>
+    <p class="hint">Role para baixo ↓</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <figure class="frame">
+    <div class="frame__img ph ph--a" data-fx="slide"></div>
+    <figcaption>Desliza dentro da moldura</figcaption>
+  </figure>
+  <figure class="frame">
+    <div class="frame__img ph ph--b" data-fx="zoom"></div>
+    <figcaption>Zoom que assenta</figcaption>
+  </figure>
+</section>
+
+<section class="s s--paper"></section>
+</main>
+
+<aside class="drawer" aria-label="Código do efeito">
+  <div class="drawer__head">
+    <div class="drawer__tabs" role="tablist">
+      <button type="button" class="drawer__tab" role="tab" data-tab="html" aria-selected="false">HTML</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="css" aria-selected="false">CSS</button>
+      <button type="button" class="drawer__tab" role="tab" data-tab="js" aria-selected="false">JS</button>
+    </div>
+    <button type="button" class="drawer__act" data-copy>Copiar</button>
+    <button type="button" class="drawer__act" data-close aria-label="Fechar">✕</button>
+  </div>
+  <pre data-pane="html"><code>&lt;link rel="stylesheet" href="style.css"&gt;
+
+&lt;section class="s s--paper"&gt;
+  &lt;div&gt;
+    &lt;h1 class="big"&gt;Parallax&lt;/h1&gt;
+    &lt;p class="lead"&gt;A foto anda mais devagar que a página.&lt;/p&gt;
+    &lt;p class="hint"&gt;Role para baixo ↓&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="gallery"&gt;
+  &lt;figure class="frame"&gt;
+    &lt;div class="frame__img ph ph--a" data-fx="slide"&gt;&lt;/div&gt;
+    &lt;figcaption&gt;Desliza dentro da moldura&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;figure class="frame"&gt;
+    &lt;div class="frame__img ph ph--b" data-fx="zoom"&gt;&lt;/div&gt;
+    &lt;figcaption&gt;Zoom que assenta&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/section&gt;
+
+&lt;section class="s s--paper"&gt;&lt;/section&gt;
+
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+  <pre data-pane="css"><code>.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 12vh 5vw; }
+.frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-md); margin: 0; }
+.frame__img { position: absolute; inset: 0; }
+.frame figcaption { position: absolute; left: 16px; bottom: 16px; padding: 6px 12px; border-radius: 8px; background: #0007; color: #fff; font-size: 13px; }
+@media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }
+</code></pre>
+  <pre data-pane="js"><code>gsap.registerPlugin(ScrollTrigger);
+
+// 1) a foto desliza dentro da moldura (a escala 1.2 evita mostrar a borda)
+gsap.fromTo('[data-fx="slide"]',
+  { yPercent: -8, scale: 1.2 },
+  {
+    yPercent: 8, scale: 1.2, ease: 'none',
+    scrollTrigger: { trigger: '[data-fx="slide"]', start: 'top bottom', end: 'bottom top', scrub: true }
+  }
+);
+
+// 2) a foto começa com zoom e assenta enquanto a moldura cruza a tela
+gsap.fromTo('[data-fx="zoom"]',
+  { scale: 1.3 },
+  {
+    scale: 1, ease: 'none',
+    scrollTrigger: { trigger: '[data-fx="zoom"]', start: 'top bottom', end: 'bottom top', scrub: true }
+  }
+);
+
+window.replay = () =&gt; scrollTo({ top: 0 });
+</code></pre>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script src="../../assets/viewer.js"></script>
+</body>
+</html>
